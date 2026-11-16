@@ -1,0 +1,67 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <a href="{{ support_email }}" data-bs-toggle="tooltip" title="{{ text_need_support }}" class="btn btn-info"><i class="fa-solid fa-life-ring"></i></a>
+        <button type="submit" form="form-seo-structured-data" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+      <div class="card-body">
+        <form id="form-seo-structured-data" action="{{ save }}" method="post" data-oc-toggle="ajax">
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">{{ entry_status }}</label>
+            <div class="col-sm-9">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="module_seo_structured_data_status" value="0"/>
+                <input type="checkbox" name="module_seo_structured_data_status" value="1" id="input-status" class="form-check-input"{% if module_seo_structured_data_status %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-fb-app-id" class="col-sm-3 col-form-label">{{ entry_fb_app_id }}</label>
+            <div class="col-sm-9">
+              <input type="text" name="module_seo_structured_data_fb_app_id" value="{{ module_seo_structured_data_fb_app_id }}" placeholder="{{ entry_fb_app_id }}" id="input-fb-app-id" class="form-control"/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-twitter-creator" class="col-sm-3 col-form-label">{{ entry_twitter_creator }}</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input type="text" name="module_seo_structured_data_twitter_creator" value="{{ module_seo_structured_data_twitter_creator }}" placeholder="{{ entry_twitter_creator }}" id="input-twitter-creator" class="form-control"/>
+              </div>
+              <div id="error-twitter-creator" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-width" class="col-sm-3 col-form-label">{{ entry_width }}</label>
+            <div class="col-sm-9">
+              <input type="text" name="module_seo_structured_data_width" value="{{ module_seo_structured_data_width }}" placeholder="200" id="input-width" class="form-control"/>
+              <div id="error-width" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-height" class="col-sm-3 col-form-label">{{ entry_height }}</label>
+            <div class="col-sm-9">
+              <input type="text" name="module_seo_structured_data_height" value="{{ module_seo_structured_data_height }}" placeholder="200" id="input-height" class="form-control"/>
+              <div id="error-height" class="invalid-feedback"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}
